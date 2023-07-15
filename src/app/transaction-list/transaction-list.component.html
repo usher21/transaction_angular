@@ -1,0 +1,11 @@
+<section class="w-full h-[93vh] px-4 py-3 relative flex item-center justify-center">
+    <div class="w-3/5">
+        <h1 class="text-2xl text-cyan-900 font-semibold p-4 mb-4">Liste des transactions</h1>
+        <div class="shadow-xl rounded-lg" *ngFor="let transaction of transactions.data">
+            <div class="flex item-center justify-between p-6 mb-3 hover:bg-gray-100 cursor-pointer">
+                <span class="font-semibold">{{ transaction.action == 0 ? 'Retrait' : transaction.action == 1 ? 'Dépôt' : 'Transfert' }}</span>
+                <span>Montant: <span class="font-semibold">{{transaction.amount}} F</span></span>
+            </div>
+        </div>
+    </div>
+</section>
