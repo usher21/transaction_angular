@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../api.service';
+import { ClientService } from '../client.service';
 
 @Component({
 	selector: 'app-add-user',
@@ -24,9 +24,9 @@ export class AddUserComponent {
 	action = "http://localhost:8000/transaction-api/users";
 	method = "POST";
 
-	constructor(private formBuilder: FormBuilder,private apiservice:ApiService) {
+	constructor(private formBuilder: FormBuilder,private clientService:ClientService) {
 		this.clients = this.formBuilder.group({
-			fullname: this.formBuilder.control('',[Validators.required,Validators.pattern('[a-zA-Z ]+[0-9]*'),Validators.minLength(5)]),
+			fullname: this.formBuilder.control('', [ Validators.required, Validators.pattern('[a-zA-Z ]+[0-9]*'), Validators.minLength(5)]),
 			email: this.formBuilder.control('',[Validators.required,Validators.email]),
 			phone: this.formBuilder.control('',[Validators.required,Validators.pattern('(7[76508 ]{1})([0-9]{7})')])
 		});
@@ -48,7 +48,7 @@ export class AddUserComponent {
 	}
 
 	onSubmit(): void {
-		this.apiservice.addClient(this.clients.value).subscribe(
+		this.clientService.addClient(this.clients.value).subscribe(
 			data => {
 				console.log("client ajouté avec succés", data);
 			},

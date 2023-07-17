@@ -14,7 +14,7 @@
     </ul>
 
     <section class="user-list-section">
-        <div *ngFor="let client of clients.data">
+        <div *ngFor="let client of clients">
             <app-user-item class="grid grid-cols-4" [client]="client"></app-user-item>
         </div>
     </section>

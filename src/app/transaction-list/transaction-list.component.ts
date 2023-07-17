@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../api.service';
+import { TransactionService } from '../transaction.service';
 
 @Component({
 	selector: 'app-transaction-list',
@@ -9,12 +9,12 @@ import { ApiService } from '../api.service';
 export class TransactionListComponent {
 	transactions: any;
 
-	constructor(private apiService: ApiService) {
+	constructor(private transactionService: TransactionService) {
 		this.getTransactions();
 	}
 
 	getTransactions () {
-		this.apiService.getTransactions().subscribe(
+		this.transactionService.getTransactions().subscribe(
 			transaction => {
 				this.transactions = transaction
 				console.log(this.transactions);
